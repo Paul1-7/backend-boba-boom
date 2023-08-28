@@ -1,0 +1,22 @@
+{
+  "compilerOptions": {
+    "resolveJsonModule": true,
+    "module": "CommonJS",
+    "moduleResolution": "node",
+    "forceConsistentCasingInFileNames": true,
+    "sourceMap": true,
+    "target": "es6",
+    "incremental": true,
+    "experimentalDecorators": true,
+    "emitDecoratorMetadata": true,
+    "baseUrl": ".",
+    "paths": {
+      "~/*": ["./src/*"]
+    },
+    "allowJs": true,
+    "outDir": "build",
+    "esModuleInterop": true,
+    "strictPropertyInitialization": false,
+    "skipLibCheck": true
+  }
+}
