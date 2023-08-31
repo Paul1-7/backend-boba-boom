@@ -9,7 +9,7 @@
   ],
   "overrides": [
     {
-      "files": ["src/db/migrations/*.js"],
+      "files": ["src/db/migrations/*.js", "src/db/seeders/*.js"],
       "rules": {
         "@typescript-eslint/no-unused-vars": "off",
         "no-undef": "off"
@@ -22,7 +22,7 @@
     "@typescript-eslint/no-explicit-any": ["error", { "fixToUnknown": true }],
     "curly": "error",
     "no-empty": "error",
-    "indent": ["error", 2],
+    "indent": "off",
     "@typescript-eslint/no-var-requires": "off",
     "@typescript-eslint/no-unused-vars": "error"
   }
