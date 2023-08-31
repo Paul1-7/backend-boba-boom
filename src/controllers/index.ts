@@ -1,1 +1,1 @@
-export * from "./investor.controller";
+export * from "./order.controller";

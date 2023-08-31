@@ -1,6 +1,6 @@
 import { CreateOptions, FindOptions } from "sequelize";
 import { Order } from "~/db/models";
-import { OrderI } from "~/types";
+import { OrderI } from "..";
 
 export class OrderService {
   async getList(options?: FindOptions): Promise<OrderI[]> {
