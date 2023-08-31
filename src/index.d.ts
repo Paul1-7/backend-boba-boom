@@ -11,6 +11,11 @@ interface OrderI {
   total: number;
 }
 
+interface RolI {
+  id: string;
+  name: string;
+}
+
 interface OrderDetailI {
   idOrder: string;
   idFlavour: string;
