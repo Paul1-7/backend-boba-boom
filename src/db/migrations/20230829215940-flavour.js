@@ -1,7 +1,7 @@
 "use strict";
 module.exports = {
   up: async (queryInterface, Sequelize) => {
-    await queryInterface.createTable("Flavours", {
+    await queryInterface.createTable("flavours", {
       id: {
         allowNull: false,
         primaryKey: true,
@@ -24,7 +24,7 @@ module.exports = {
         allowNull: false,
         type: Sequelize.UUID,
         references: {
-          model: "Menus",
+          model: "menus",
           key: "id",
         },
         onUpdate: "CASCADE",
@@ -40,9 +40,13 @@ module.exports = {
         type: Sequelize.DATE,
         defaultValue: Sequelize.literal("CURRENT_TIMESTAMP"),
       },
+      deletedAt: {
+        type: Sequelize.DATE,
+        allowNull: true,
+      },
     });
   },
   down: async (queryInterface, Sequelize) => {
-    await queryInterface.dropTable("Flavours");
+    await queryInterface.dropTable("flavours");
   },
 };

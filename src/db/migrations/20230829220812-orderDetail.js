@@ -1,13 +1,13 @@
 module.exports = {
   up: async (queryInterface, Sequelize) => {
-    await queryInterface.createTable("OrdersDetail", {
+    await queryInterface.createTable("ordersDetail", {
       idOrder: {
         allowNull: false,
         primaryKey: true,
         defaultValue: Sequelize.UUIDV4,
         type: Sequelize.UUID,
         references: {
-          model: "Orders",
+          model: "orders",
           key: "id",
         },
         onUpdate: "CASCADE",
@@ -19,7 +19,7 @@ module.exports = {
         defaultValue: Sequelize.UUIDV4,
         type: Sequelize.UUID,
         references: {
-          model: "Flavours",
+          model: "flavours",
           key: "id",
         },
         onUpdate: "CASCADE",
@@ -30,7 +30,7 @@ module.exports = {
         primaryKey: true,
         type: Sequelize.UUID,
         references: {
-          model: "Menus",
+          model: "menus",
           key: "id",
         },
         onUpdate: "CASCADE",
@@ -50,9 +50,13 @@ module.exports = {
         type: Sequelize.DATE,
         defaultValue: Sequelize.literal("CURRENT_TIMESTAMP"),
       },
+      deletedAt: {
+        type: Sequelize.DATE,
+        allowNull: true,
+      },
     });
   },
   down: async (queryInterface, Sequelize) => {
-    await queryInterface.dropTable("OrdersDetail");
+    await queryInterface.dropTable("ordersDetail");
   },
 };

@@ -1,6 +1,6 @@
 module.exports = {
   up: async (queryInterface, Sequelize) => {
-    await queryInterface.createTable("Menus", {
+    await queryInterface.createTable("menus", {
       id: {
         allowNull: false,
         primaryKey: true,
@@ -21,9 +21,13 @@ module.exports = {
         type: Sequelize.DATE,
         defaultValue: Sequelize.literal("CURRENT_TIMESTAMP"),
       },
+      deletedAt: {
+        type: Sequelize.DATE,
+        allowNull: true,
+      },
     });
   },
   down: async (queryInterface, Sequelize) => {
-    await queryInterface.dropTable("Menus");
+    await queryInterface.dropTable("menus");
   },
 };

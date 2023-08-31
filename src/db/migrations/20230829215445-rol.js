@@ -1,26 +1,15 @@
-"use strict";
 module.exports = {
   up: async (queryInterface, Sequelize) => {
-    await queryInterface.createTable("pricesMenus", {
+    await queryInterface.createTable("rols", {
       id: {
         allowNull: false,
         primaryKey: true,
         defaultValue: Sequelize.UUIDV4,
         type: Sequelize.UUID,
       },
-      idMenu: {
+      name: {
         allowNull: false,
-        type: Sequelize.UUID,
-        references: {
-          key: "id",
-          model: "menus",
-        },
-        onUpdate: "CASCADE",
-        onDelete: "CASCADE",
-      },
-      price: {
-        allowNull: false,
-        type: Sequelize.FLOAT,
+        type: Sequelize.TEXT,
       },
       createdAt: {
         allowNull: false,
@@ -39,6 +28,6 @@ module.exports = {
     });
   },
   down: async (queryInterface, Sequelize) => {
-    await queryInterface.dropTable("pricesMenus");
+    await queryInterface.dropTable("rols");
   },
 };
