@@ -7,6 +7,15 @@
     "plugin:@typescript-eslint/eslint-recommended",
     "plugin:@typescript-eslint/recommended"
   ],
+  "overrides": [
+    {
+      "files": ["src/db/migrations/*.js"],
+      "rules": {
+        "@typescript-eslint/no-unused-vars": "off",
+        "no-undef": "off"
+      }
+    }
+  ],
   "rules": {
     "quotes": ["error", "double"],
     "semi": ["error", "always"],
