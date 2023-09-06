@@ -1,6 +1,5 @@
 import { NextFunction, Request, Response } from "express";
-import { SOCKETS_EVENTS, responseMessage } from "~/constants";
-import { socketService } from "~/server";
+import { responseMessage } from "~/constants";
 import { OrderService } from "~/services";
 import { ErrorResponse } from "~/utils";
 
@@ -10,7 +9,6 @@ export async function getListOrders(request: Request, response: Response, next: 
   try {
     const data = await orderService.getList();
 
-    socketService.broadcastEvent(SOCKETS_EVENTS.ORDERS_LIST, data);
     return response.status(200).json({ data });
   } catch (error) {
     next(error);

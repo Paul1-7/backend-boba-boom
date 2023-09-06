@@ -1,1 +1,1 @@
-export * from "./order.schema";
+export * from "./flavour.schema";

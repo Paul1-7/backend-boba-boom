@@ -5,4 +5,14 @@ export const responseMessage = {
     deleteSuccess: "Se eliminó correctamente el banco",
     updateSuccess: "Se actualizaron correctamente los datos del banco",
   },
+  menu: {
+    addSuccess: "Se agregó correctamente el menu",
+    deleteSuccess: "Se eliminó correctamente el menu",
+    updateSuccess: "Se actualizaron correctamente los datos del menu",
+  },
+  flavour: {
+    addSuccess: "Se agregó correctamente el sabor",
+    deleteSuccess: "Se eliminó correctamente el sabor",
+    updateSuccess: "Se actualizaron correctamente los datos del sabor",
+  },
 };

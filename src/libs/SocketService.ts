@@ -1,5 +1,6 @@
 import { Server, Socket } from "socket.io";
 import { SOCKETS_EVENTS } from "~/constants";
+import { MenuService, OrderService } from "~/services";
 
 class SocketService {
   private io: Server;
@@ -13,22 +14,17 @@ class SocketService {
     this.io.on(SOCKETS_EVENTS.CONNECTION, (socket: Socket) => {
       console.log("Nuevo cliente conectado");
 
+      const emitOrders = async () => {
+        const orderService = new OrderService();
+        const data = await orderService.getList();
+        this.io.emit(SOCKETS_EVENTS.ORDERS_LIST, data);
+      };
+      emitOrders();
+
       socket.on(SOCKETS_EVENTS.DISCONNECT, () => {
         console.log("Cliente desconectado");
       });
     });
-  }
-
-  emitEvent(event: string, data: unknown) {
-    this.io.emit(event, data);
-  }
-
-  broadcastEvent(event: string, data: unknown) {
-    this.io.emit(event, data);
-  }
-
-  emitEventToUser(userId: string, event: string, data: unknown) {
-    this.io.to(userId).emit(event, data);
   }
 }
 
