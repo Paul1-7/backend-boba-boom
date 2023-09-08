@@ -9,6 +9,12 @@ export class PriceMenuService {
     });
   }
 
+  async getList(options?: FindOptions): Promise<PriceMenu[]> {
+    return await PriceMenu.findAll({
+      ...options,
+    });
+  }
+
   async getById(id: string, options?: FindOptions): Promise<PriceMenu | null> {
     return await PriceMenu.findByPk(id, {
       ...options,

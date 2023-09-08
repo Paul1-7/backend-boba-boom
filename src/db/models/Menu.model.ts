@@ -1,8 +1,9 @@
 /* eslint-disable indent */
 import { Table, Column, Model, DataType, HasMany } from "sequelize-typescript";
 import { PriceMenu } from "./PriceMenu.model";
-import { OrderDetail } from "./OrderDetail.model";
 import { MenuI } from "~/index";
+import { BobaOrderDetail } from "./BobaOrderDetail.model";
+import { WaffleOrderDetail } from "./WaffleeOrderDetail.model";
 
 @Table({ tableName: "menus" })
 export class Menu extends Model implements MenuI {
@@ -22,6 +23,9 @@ export class Menu extends Model implements MenuI {
   @HasMany(() => PriceMenu)
   priceMenu: PriceMenu[];
 
-  @HasMany(() => OrderDetail)
-  orderDetail: OrderDetail[];
+  @HasMany(() => BobaOrderDetail)
+  bobaOrdersDetail: BobaOrderDetail[];
+
+  @HasMany(() => WaffleOrderDetail)
+  waffleOrdersDetail: WaffleOrderDetail[];
 }

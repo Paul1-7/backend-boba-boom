@@ -18,9 +18,21 @@ interface RolI {
 
 interface OrderDetailI {
   idOrder: string;
-  idFlavour: string;
   idMenu: string;
   subtotal: number;
+}
+
+interface BobaOrderDetailI extends OrderDetailI {
+  idShake: string;
+  idBoba1: string;
+  idBoba2?: string;
+  idBoba3?: string;
+}
+
+interface WaffleOrderDetailI extends OrderDetailI {
+  idFruit: string;
+  idCoating: string;
+  idTopping?: string;
 }
 
 interface FlavourI {

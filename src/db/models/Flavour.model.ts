@@ -1,8 +1,9 @@
 /* eslint-disable indent */
 import { Table, Column, Model, DataType, BelongsTo, ForeignKey, HasMany } from "sequelize-typescript";
 import { Menu } from "./Menu.model";
-import { OrderDetail } from "./OrderDetail.model";
 import { FlavourI } from "~/index";
+import { BobaOrderDetail } from "./BobaOrderDetail.model";
+import { WaffleOrderDetail } from "./WaffleeOrderDetail.model";
 
 @Table({ tableName: "flavours" })
 export class Flavour extends Model implements FlavourI {
@@ -41,6 +42,9 @@ export class Flavour extends Model implements FlavourI {
   @BelongsTo(() => Menu)
   menu: Menu;
 
-  @HasMany(() => OrderDetail)
-  ordersDetail: OrderDetail[];
+  @HasMany(() => BobaOrderDetail)
+  bobaOrdersDetail: BobaOrderDetail[];
+
+  @HasMany(() => WaffleOrderDetail)
+  waffleOrdersDetail: WaffleOrderDetail[];
 }

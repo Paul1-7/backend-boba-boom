@@ -3,10 +3,9 @@ import { PriceMenuService } from "~/services";
 
 const priceMenuService = new PriceMenuService();
 
-export async function getListPricesMenuById(request: Request, response: Response, next: NextFunction) {
+export async function getListPricesMenu(request: Request, response: Response, next: NextFunction) {
   try {
-    const { id } = request.params;
-    const data = await priceMenuService.getListById(id);
+    const data = await priceMenuService.getList();
     return response.status(200).json({ data });
   } catch (error) {
     next(error);

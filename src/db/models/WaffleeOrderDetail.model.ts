@@ -3,10 +3,10 @@ import { Table, Column, Model, DataType, BelongsTo, ForeignKey } from "sequelize
 import { Menu } from "./Menu.model";
 import { Flavour } from "./Flavour.model";
 import { Order } from "./Order.model";
-import { OrderDetailI } from "~/index";
+import { WaffleOrderDetailI } from "~/index";
 
-@Table({ tableName: "ordersDetail" })
-export class OrderDetail extends Model implements OrderDetailI {
+@Table({ tableName: "wafflesOrdersDetail" })
+export class WaffleOrderDetail extends Model implements WaffleOrderDetailI {
   @ForeignKey(() => Order)
   @Column({
     primaryKey: true,
@@ -21,7 +21,23 @@ export class OrderDetail extends Model implements OrderDetailI {
     defaultValue: DataType.UUIDV4,
     type: DataType.UUID,
   })
-  idFlavour: string;
+  idFruit: string;
+
+  @ForeignKey(() => Flavour)
+  @Column({
+    primaryKey: true,
+    defaultValue: DataType.UUIDV4,
+    type: DataType.UUID,
+  })
+  idCoating: string;
+
+  @ForeignKey(() => Flavour)
+  @Column({
+    primaryKey: true,
+    defaultValue: DataType.UUIDV4,
+    type: DataType.UUID,
+  })
+  idTopping: string;
 
   @ForeignKey(() => Menu)
   @Column({
@@ -39,8 +55,16 @@ export class OrderDetail extends Model implements OrderDetailI {
 
   @BelongsTo(() => Menu)
   menu: Menu;
-  @BelongsTo(() => Flavour)
-  flavour: Flavour;
+
   @BelongsTo(() => Order)
   order: Order;
+
+  @BelongsTo(() => Flavour, "idFruit")
+  fruitFlavour: Flavour;
+
+  @BelongsTo(() => Flavour, "idCoating")
+  coatingFlavour: Flavour;
+
+  @BelongsTo(() => Flavour, "idTopping")
+  toppingFlavour: Flavour;
 }

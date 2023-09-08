@@ -1,5 +1,5 @@
 import { CreateOptions, FindOptions } from "sequelize";
-import { Order } from "~/db/models";
+import { Flavour, Order } from "~/db/models";
 import { OrderI } from "..";
 
 export class OrderService {
@@ -8,7 +8,15 @@ export class OrderService {
   }
 
   async getById(id: string, options?: FindOptions): Promise<OrderI | null> {
-    return await Order.findByPk(id, options);
+    return await Order.findByPk(id, {
+      include: [
+        {
+          model: Flavour,
+          as: "shakeFlavour",
+        },
+      ],
+      ...options,
+    });
   }
 
   async create(data: OrderI, options?: CreateOptions): Promise<OrderI> {

@@ -1,6 +1,6 @@
 import { Server, Socket } from "socket.io";
 import { SOCKETS_EVENTS } from "~/constants";
-import { MenuService, OrderService } from "~/services";
+import { OrderService } from "~/services";
 
 class SocketService {
   private io: Server;
@@ -12,8 +12,6 @@ class SocketService {
 
   private initSocket() {
     this.io.on(SOCKETS_EVENTS.CONNECTION, (socket: Socket) => {
-      console.log("Nuevo cliente conectado");
-
       const emitOrders = async () => {
         const orderService = new OrderService();
         const data = await orderService.getList();

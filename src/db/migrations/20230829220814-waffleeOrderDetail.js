@@ -13,8 +13,7 @@ module.exports = {
         onUpdate: "CASCADE",
         onDelete: "CASCADE",
       },
-      idFlavour: {
-        allowNull: false,
+      idFruit: {
         primaryKey: true,
         defaultValue: Sequelize.UUIDV4,
         type: Sequelize.UUID,
@@ -23,7 +22,28 @@ module.exports = {
           key: "id",
         },
         onUpdate: "CASCADE",
-        onDelete: "CASCADE",
+        onDelete: "SET NULL",
+      },
+      idCoating: {
+        primaryKey: true,
+        defaultValue: Sequelize.UUIDV4,
+        type: Sequelize.UUID,
+        references: {
+          model: "flavours",
+          key: "id",
+        },
+        onUpdate: "CASCADE",
+        onDelete: "SET NULL",
+      },
+      idTopping: {
+        primaryKey: true,
+        defaultValue: Sequelize.UUIDV4,
+        type: Sequelize.UUID,
+        references: {
+          model: "flavours",
+        },
+        onUpdate: "CASCADE",
+        onDelete: "SET NULL",
       },
       idMenu: {
         allowNull: false,
