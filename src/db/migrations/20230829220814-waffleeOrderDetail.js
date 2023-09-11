@@ -1,10 +1,13 @@
 module.exports = {
   up: async (queryInterface, Sequelize) => {
-    await queryInterface.createTable("ordersDetail", {
-      idOrder: {
-        allowNull: false,
+    await queryInterface.createTable("wafflesOrdersDetail", {
+      id: {
         primaryKey: true,
         defaultValue: Sequelize.UUIDV4,
+        type: Sequelize.UUID,
+      },
+      idOrder: {
+        allowNull: false,
         type: Sequelize.UUID,
         references: {
           model: "orders",
@@ -14,8 +17,6 @@ module.exports = {
         onDelete: "CASCADE",
       },
       idFruit: {
-        primaryKey: true,
-        defaultValue: Sequelize.UUIDV4,
         type: Sequelize.UUID,
         references: {
           model: "flavours",
@@ -25,8 +26,6 @@ module.exports = {
         onDelete: "SET NULL",
       },
       idCoating: {
-        primaryKey: true,
-        defaultValue: Sequelize.UUIDV4,
         type: Sequelize.UUID,
         references: {
           model: "flavours",
@@ -36,8 +35,7 @@ module.exports = {
         onDelete: "SET NULL",
       },
       idTopping: {
-        primaryKey: true,
-        defaultValue: Sequelize.UUIDV4,
+        allowNull: true,
         type: Sequelize.UUID,
         references: {
           model: "flavours",
@@ -47,7 +45,6 @@ module.exports = {
       },
       idMenu: {
         allowNull: false,
-        primaryKey: true,
         type: Sequelize.UUID,
         references: {
           model: "menus",
@@ -56,9 +53,8 @@ module.exports = {
         onUpdate: "CASCADE",
         onDelete: "CASCADE",
       },
-      subtotal: {
-        allowNull: false,
-        type: Sequelize.FLOAT,
+      idPrice: {
+        type: Sequelize.UUID,
       },
       createdAt: {
         allowNull: false,
@@ -77,6 +73,6 @@ module.exports = {
     });
   },
   down: async (queryInterface, Sequelize) => {
-    await queryInterface.dropTable("ordersDetail");
+    await queryInterface.dropTable("wafflesOrdersDetail");
   },
 };

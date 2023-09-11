@@ -1,6 +1,7 @@
 /* eslint-disable indent */
-import { Table, Column, Model, DataType } from "sequelize-typescript";
+import { Table, Column, Model, DataType, HasMany } from "sequelize-typescript";
 import { RolI } from "~/index";
+import { User } from "./User.model";
 
 @Table({ tableName: "rols" })
 export class Rol extends Model implements RolI {
@@ -16,4 +17,7 @@ export class Rol extends Model implements RolI {
     allowNull: false,
   })
   name: string;
+
+  @HasMany(() => User)
+  users: User[];
 }

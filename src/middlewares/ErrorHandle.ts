@@ -4,6 +4,7 @@ import { ErrorHandlerStrategy } from "..";
 
 // eslint-disable-next-line @typescript-eslint/no-unused-vars
 export const errorHandler: ErrorRequestHandler = (err: Error, _req: Request, res: Response, _next: NextFunction) => {
+  console.log("TCL: errorHandler:ErrorRequestHandler -> err", err);
   const strategies: ErrorHandlerStrategy[] = [
     new ForeignKeyConstraintErrorHandler(),
     new HttpErrorHandler(),

@@ -7,51 +7,48 @@ import { WaffleOrderDetailI } from "~/index";
 
 @Table({ tableName: "wafflesOrdersDetail" })
 export class WaffleOrderDetail extends Model implements WaffleOrderDetailI {
-  @ForeignKey(() => Order)
   @Column({
     primaryKey: true,
     defaultValue: DataType.UUIDV4,
+    type: DataType.UUID,
+  })
+  id: string;
+
+  @ForeignKey(() => Order)
+  @Column({
     type: DataType.UUID,
   })
   idOrder: string;
 
   @ForeignKey(() => Flavour)
   @Column({
-    primaryKey: true,
-    defaultValue: DataType.UUIDV4,
     type: DataType.UUID,
   })
   idFruit: string;
 
   @ForeignKey(() => Flavour)
   @Column({
-    primaryKey: true,
-    defaultValue: DataType.UUIDV4,
     type: DataType.UUID,
   })
   idCoating: string;
 
   @ForeignKey(() => Flavour)
   @Column({
-    primaryKey: true,
-    defaultValue: DataType.UUIDV4,
     type: DataType.UUID,
   })
   idTopping: string;
 
   @ForeignKey(() => Menu)
   @Column({
-    primaryKey: true,
-    type: DataType.TEXT,
+    type: DataType.UUID,
     allowNull: false,
   })
   idMenu: string;
 
   @Column({
-    type: DataType.FLOAT,
-    allowNull: false,
+    type: DataType.UUID,
   })
-  subtotal: number;
+  idPrice: string;
 
   @BelongsTo(() => Menu)
   menu: Menu;

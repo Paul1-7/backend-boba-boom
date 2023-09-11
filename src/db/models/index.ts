@@ -4,4 +4,5 @@ export * from "./Menu.model";
 export * from "./Order.model";
 export * from "./PriceMenu.model";
 export * from "./Rol.model";
+export * from "./User.model";
 export * from "./WaffleeOrderDetail.model";

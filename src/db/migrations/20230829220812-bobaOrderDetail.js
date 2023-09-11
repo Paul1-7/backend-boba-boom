@@ -1,9 +1,13 @@
 module.exports = {
   up: async (queryInterface, Sequelize) => {
-    await queryInterface.createTable("ordersDetail", {
+    await queryInterface.createTable("bobasOrdersDetail", {
+      id: {
+        primaryKey: true,
+        defaultValue: Sequelize.UUIDV4,
+        type: Sequelize.UUID,
+      },
       idOrder: {
         allowNull: false,
-        primaryKey: true,
         defaultValue: Sequelize.UUIDV4,
         type: Sequelize.UUID,
         references: {
@@ -25,8 +29,7 @@ module.exports = {
         onDelete: "SET NULL",
       },
       idBoba1: {
-        primaryKey: true,
-        defaultValue: Sequelize.UUIDV4,
+        defaultValue: null,
         type: Sequelize.UUID,
         references: {
           model: "flavours",
@@ -36,9 +39,9 @@ module.exports = {
         onDelete: "SET NULL",
       },
       idBoba2: {
-        primaryKey: true,
-        defaultValue: Sequelize.UUIDV4,
+        defaultValue: null,
         type: Sequelize.UUID,
+        allowNull: true,
         references: {
           model: "flavours",
         },
@@ -46,8 +49,8 @@ module.exports = {
         onDelete: "SET NULL",
       },
       idBoba3: {
-        primaryKey: true,
-        defaultValue: Sequelize.UUIDV4,
+        defaultValue: null,
+        allowNull: true,
         type: Sequelize.UUID,
         references: {
           model: "flavours",
@@ -58,7 +61,6 @@ module.exports = {
       },
       idMenu: {
         allowNull: false,
-        primaryKey: true,
         type: Sequelize.UUID,
         references: {
           model: "menus",
@@ -67,9 +69,8 @@ module.exports = {
         onUpdate: "CASCADE",
         onDelete: "CASCADE",
       },
-      subtotal: {
-        allowNull: false,
-        type: Sequelize.FLOAT,
+      idPrice: {
+        type: Sequelize.UUID,
       },
       createdAt: {
         allowNull: false,
@@ -88,6 +89,6 @@ module.exports = {
     });
   },
   down: async (queryInterface, Sequelize) => {
-    await queryInterface.dropTable("ordersDetail");
+    await queryInterface.dropTable("bobasOrdersDetail");
   },
 };

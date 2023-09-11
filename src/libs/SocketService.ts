@@ -19,6 +19,22 @@ class SocketService {
       };
       emitOrders();
 
+      socket.on(SOCKETS_EVENTS.ORDER_ADDED, () => {
+        emitOrders();
+      });
+
+      socket.on(SOCKETS_EVENTS.ORDER_MODIFIED, () => {
+        emitOrders();
+      });
+
+      socket.on(SOCKETS_EVENTS.ORDER_DELETE, () => {
+        emitOrders();
+      });
+
+      socket.on(SOCKETS_EVENTS.CHANGE_STATE, () => {
+        emitOrders();
+      });
+
       socket.on(SOCKETS_EVENTS.DISCONNECT, () => {
         console.log("Cliente desconectado");
       });

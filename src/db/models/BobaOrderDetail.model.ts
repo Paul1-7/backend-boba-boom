@@ -7,59 +7,54 @@ import { BobaOrderDetailI } from "~/index";
 
 @Table({ tableName: "bobasOrdersDetail" })
 export class BobaOrderDetail extends Model implements BobaOrderDetailI {
-  @ForeignKey(() => Order)
   @Column({
     primaryKey: true,
     defaultValue: DataType.UUIDV4,
+    type: DataType.UUID,
+  })
+  id: string;
+
+  @ForeignKey(() => Order)
+  @Column({
     type: DataType.UUID,
   })
   idOrder: string;
 
   @ForeignKey(() => Flavour)
   @Column({
-    primaryKey: true,
-    defaultValue: DataType.UUIDV4,
     type: DataType.UUID,
   })
   idShake: string;
 
   @ForeignKey(() => Flavour)
   @Column({
-    primaryKey: true,
-    defaultValue: DataType.UUIDV4,
     type: DataType.UUID,
   })
   idBoba1: string;
 
   @ForeignKey(() => Flavour)
   @Column({
-    primaryKey: true,
-    defaultValue: DataType.UUIDV4,
     type: DataType.UUID,
   })
   idBoba2: string;
 
   @ForeignKey(() => Flavour)
   @Column({
-    primaryKey: true,
-    defaultValue: DataType.UUIDV4,
     type: DataType.UUID,
   })
   idBoba3: string;
 
   @ForeignKey(() => Menu)
   @Column({
-    primaryKey: true,
     type: DataType.TEXT,
     allowNull: false,
   })
   idMenu: string;
 
   @Column({
-    type: DataType.FLOAT,
-    allowNull: false,
+    type: DataType.UUID,
   })
-  subtotal: number;
+  idPrice: string;
 
   @BelongsTo(() => Menu)
   menu: Menu;

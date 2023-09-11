@@ -1,14 +1,15 @@
 export const responseMessage = {
   notFound: "No se encontró el registro solicitado",
   order: {
-    addSuccess: "Se agregó correctamente el banco",
-    deleteSuccess: "Se eliminó correctamente el banco",
-    updateSuccess: "Se actualizaron correctamente los datos del banco",
+    addSuccess: "Se agregó correctamente el pedido",
+    deleteSuccess: "Se eliminó correctamente el pedido",
+    updateSuccess: "Se actualizaron correctamente los datos del pedido",
+    changeState: "Se actualizo el estado del pedido",
   },
-  menu: {
-    addSuccess: "Se agregó correctamente el menu",
-    deleteSuccess: "Se eliminó correctamente el menu",
-    updateSuccess: "Se actualizaron correctamente los datos del menu",
+  user: {
+    addSuccess: "Se agregó correctamente al usuario",
+    deleteSuccess: "Se eliminó correctamente al usuario",
+    updateSuccess: "Se actualizaron correctamente los datos del usuario",
   },
   flavour: {
     addSuccess: "Se agregó correctamente el sabor",

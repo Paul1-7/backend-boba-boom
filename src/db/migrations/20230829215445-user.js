@@ -1,24 +1,29 @@
-"use strict";
 module.exports = {
   up: async (queryInterface, Sequelize) => {
-    await queryInterface.createTable("orders", {
+    await queryInterface.createTable("users", {
       id: {
         allowNull: false,
         primaryKey: true,
         defaultValue: Sequelize.UUIDV4,
         type: Sequelize.UUID,
       },
-      customer: {
+      user: {
         allowNull: false,
         type: Sequelize.TEXT,
       },
-      state: {
+      password: {
         allowNull: false,
         type: Sequelize.TEXT,
       },
-      total: {
+      idRol: {
         allowNull: false,
-        type: Sequelize.FLOAT,
+        type: Sequelize.UUID,
+        references: {
+          model: "rols",
+          key: "id",
+        },
+        onUpdate: "CASCADE",
+        onDelete: "CASCADE",
       },
       createdAt: {
         allowNull: false,
@@ -37,6 +42,6 @@ module.exports = {
     });
   },
   down: async (queryInterface, Sequelize) => {
-    await queryInterface.dropTable("orders");
+    await queryInterface.dropTable("users");
   },
 };

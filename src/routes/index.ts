@@ -1,24 +1,17 @@
-import express, { Application, Router } from "express";
-import fs from "fs-extra";
+import { Application } from "express";
 
-const router: Router = express.Router();
-
-const PATH_ROUTES: string = __dirname;
-
-const removeExtension = (filename: string): string => {
-  return filename.split(".").shift();
-};
+import { router as rFlavour } from "./flavours.route";
+import { router as rMenu } from "./menus.route";
+import { router as rOrder } from "./orders.route";
+import { router as rPriceMenu } from "./prices-menu.route";
+import { router as rRol } from "./rols.route";
 
 const routerApi = (app: Application): void => {
-  app.use("/api/v1/", router);
-  fs.readdirSync(PATH_ROUTES).filter((file: string) => {
-    const name = removeExtension(file);
-    if (name !== "index") {
-      import(`./${file}`).then((module) => {
-        router.use(`/${name}`, module.router);
-      });
-    }
-  });
+  app.use("/api/v1/flavours", rFlavour);
+  app.use("/api/v1/menus", rMenu);
+  app.use("/api/v1/orders", rOrder);
+  app.use("/api/v1/prices-menu", rPriceMenu);
+  app.use("/api/v1/rols", rRol);
 };
 
 export default routerApi;
