@@ -1,15 +1,32 @@
 import { CreateOptions, FindOptions } from "sequelize";
-import { User } from "~/db/models";
+import { Rol, User } from "~/db/models";
 
 export class UserService {
   async getList(options?: FindOptions): Promise<User[]> {
     return await User.findAll({
+      attributes: ["id", "user"],
+      include: [
+        {
+          model: Rol,
+          as: "rol",
+          attributes: ["id", "name"],
+        },
+      ],
       ...options,
     });
   }
 
   async getById(id: string, options?: FindOptions): Promise<User | null> {
     return await User.findByPk(id, {
+      attributes: ["id", "user", "idRol"],
+      ...options,
+    });
+  }
+
+  async getByOptions(options?: FindOptions): Promise<User | null> {
+    return await User.findOne({
+      attributes: ["id", "user", "idRol", "password"],
+      include: [{ model: Rol, as: "rol", attributes: ["id", "name"] }],
       ...options,
     });
   }

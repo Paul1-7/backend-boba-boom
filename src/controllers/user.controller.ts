@@ -36,7 +36,7 @@ export async function addUser(request: Request, response: Response, next: NextFu
   try {
     const { body } = request;
 
-    const passwordHashed = hash(body.password, 10);
+    const passwordHashed = await hash(body.password, 10);
 
     await userService.create({ ...body, password: passwordHashed }, { transaction });
 
@@ -54,7 +54,7 @@ export async function updateUser(request: Request, response: Response, next: Nex
     const { id } = request.params;
 
     if (data.password.length > 0) {
-      data.password = hash(data.password, 10);
+      data.password = await hash(data.password, 10);
     } else {
       delete data.password;
     }

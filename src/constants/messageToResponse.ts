@@ -16,4 +16,7 @@ export const responseMessage = {
     deleteSuccess: "Se eliminó correctamente el sabor",
     updateSuccess: "Se actualizaron correctamente los datos del sabor",
   },
+  auth: {
+    notValid: "Las crendenciales no son válidas",
+  },
 };

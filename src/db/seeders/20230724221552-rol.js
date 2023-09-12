@@ -13,6 +13,12 @@ module.exports = {
         createdAt: new Date(),
         updatedAt: new Date(),
       },
+      {
+        id: "ca2b7744-0401-4d1e-9173-30f74b568e7d",
+        name: "Administrador",
+        createdAt: new Date(),
+        updatedAt: new Date(),
+      },
     ]);
   },
 
