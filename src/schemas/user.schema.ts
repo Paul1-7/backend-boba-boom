@@ -7,7 +7,12 @@ export const userSchema = z.object({
       .string()
       .min(3, "El campo 'user' debe tener al menos 3 caracteres.")
       .max(20, "El campo 'user' no puede tener más de 20 caracteres."),
-    password: z.string().min(4, "El campo 'password' debe tener al menos 8 caracteres."),
+    password: z
+      .string()
+      .optional()
+      .refine((password) => !password || password.length >= 4, {
+        message: "El campo debe tener al menos 4 caracteres si se proporciona.",
+      }),
     idRol: z.string(),
   }),
 });
