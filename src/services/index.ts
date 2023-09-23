@@ -3,6 +3,7 @@ export * from "./flavour.service";
 export * from "./menu.service";
 export * from "./order.service";
 export * from "./priceMenu.service";
+export * from "./pushNotification.service";
 export * from "./rol.service";
 export * from "./user.service";
 export * from "./waffleeOrderDetail.service";

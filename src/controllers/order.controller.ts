@@ -2,12 +2,14 @@ import { NextFunction, Request, Response } from "express";
 import { Op } from "sequelize";
 import { OrderStates, responseMessage } from "~/constants";
 import { sequelize } from "~/db";
+import { PushNotificationService } from "~/libs";
 import { BobaOrderService, OrderService, WaffleeOrderService } from "~/services";
 import { ErrorResponse } from "~/utils";
 
 const orderService = new OrderService();
 const bobaOrderService = new BobaOrderService();
 const waffleeOrderService = new WaffleeOrderService();
+const pushService = new PushNotificationService();
 
 const BOBA_ID = "84280cbb-57c2-4806-a3ea-7f81848efdbf";
 const WAFFLEE_ID = "369bf017-c1e5-4e5c-98ae-1185b21e53bf";
@@ -70,6 +72,9 @@ export async function addOrder(request: Request, response: Response, next: NextF
 
     await waffleeOrderService.create(dataWaffleeDetail, { transaction });
     await transaction.commit();
+
+    await pushService.sendToAllSubscribers({ title: "Boba Boo", body: "Se creó un nuevo pedido" });
+
     return response.status(201).json({ message: responseMessage.order.addSuccess });
   } catch (error) {
     await transaction.rollback();
@@ -102,6 +107,8 @@ export async function updateOrder(request: Request, response: Response, next: Ne
     await waffleeOrderService.update(id, dataWaffleeDetail, { transaction });
     await transaction.commit();
 
+    await pushService.sendToAllSubscribers({ title: "Boba Boo", body: "Se actualizo un pedido" });
+
     return response.status(200).json({ message: responseMessage.order.updateSuccess });
   } catch (error) {
     next(error);
@@ -114,6 +121,7 @@ export async function deleteOrder(request: Request, response: Response, next: Ne
 
     await orderService.delete(id, { state: OrderStates.CANCEL });
 
+    await pushService.sendToAllSubscribers({ title: "Boba Boo", body: "Se eliminó un pedido" });
     return response.status(200).json({ message: responseMessage.order.deleteSuccess });
   } catch (error) {
     next(error);
@@ -126,6 +134,8 @@ export async function changeStateOrder(request: Request, response: Response, nex
     const { body } = request;
 
     await orderService.update(id, { state: body.state });
+
+    await pushService.sendToAllSubscribers({ title: "Boba Boo", body: "Se cambio el estado de un pedido" });
 
     return response.status(200).json({ message: responseMessage.order.changeState });
   } catch (error) {

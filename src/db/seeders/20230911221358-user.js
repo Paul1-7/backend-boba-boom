@@ -9,7 +9,7 @@ module.exports = {
         {
           id: "ca2b7744-0401-4d1e-9173-30f74b568e7d",
           user: "admin",
-          password: "$2y$10$y0hPV7HzH2UcQlZpoB2B3OL6Qqi4WAnO9wNX9i6aqt94RifjEDLmu",
+          password: "$2a$12$tJoTZ3pi2Rj8A/hMLYJL6OEnqKPGRggo8U0cGFgawxYLkr9MzzfC2",
           idRol: "ca2b7744-0401-4d1e-9173-30f74b568e7d",
         },
       ],

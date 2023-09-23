@@ -1,7 +1,17 @@
 import { Sequelize } from "sequelize-typescript";
 import { CONFIG } from "~/config/config";
 import { ErrorResponse } from "~/utils";
-import { BobaOrderDetail, Flavour, Menu, Order, PriceMenu, Rol, User, WaffleOrderDetail } from "./models";
+import {
+  BobaOrderDetail,
+  Flavour,
+  Menu,
+  Order,
+  PriceMenu,
+  PushNotification,
+  Rol,
+  User,
+  WaffleOrderDetail,
+} from "./models";
 
 export const sequelize = new Sequelize(CONFIG.DATABASE_URL, {
   dialect: "postgres",
@@ -16,7 +26,7 @@ export const sequelize = new Sequelize(CONFIG.DATABASE_URL, {
   },
 });
 
-sequelize.addModels([Order, Flavour, Menu, BobaOrderDetail, WaffleOrderDetail, PriceMenu, Rol, User]);
+sequelize.addModels([Order, Flavour, Menu, BobaOrderDetail, WaffleOrderDetail, PriceMenu, Rol, User, PushNotification]);
 
 sequelize.addHook("beforeSave", (instance) => {
   for (const field in instance.dataValues) {

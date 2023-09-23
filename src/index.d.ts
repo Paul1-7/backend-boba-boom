@@ -68,3 +68,9 @@ interface RolI {
   id: string;
   name: string;
 }
+
+interface PushNotificationI {
+  id: string;
+  token: string;
+  idUser: string;
+}

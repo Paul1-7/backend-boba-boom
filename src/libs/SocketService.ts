@@ -29,7 +29,7 @@ class SocketService {
           title: "Boba boo",
           body: "Hay un nuevo pedido",
         };
-        emitOrders(notification);
+        emitOrders();
       });
 
       socket.on(SOCKETS_EVENTS.ORDER_MODIFIED, () => {
@@ -37,7 +37,7 @@ class SocketService {
           title: "Boba boo",
           body: "Se ha modificado un pedido",
         };
-        emitOrders(notification);
+        emitOrders();
       });
 
       socket.on(SOCKETS_EVENTS.ORDER_DELETE, () => {
@@ -45,7 +45,7 @@ class SocketService {
           title: "Boba boo",
           body: "Se ha cancelado un pedido",
         };
-        emitOrders(notification);
+        emitOrders();
       });
 
       socket.on(SOCKETS_EVENTS.CHANGE_STATE, () => {
@@ -53,7 +53,7 @@ class SocketService {
           title: "Boba boo",
           body: "Un pedido cambio de estado pedido",
         };
-        emitOrders(notification);
+        emitOrders();
       });
 
       socket.on(SOCKETS_EVENTS.DISCONNECT, () => {
