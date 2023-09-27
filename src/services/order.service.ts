@@ -4,7 +4,7 @@ import { OrderI } from "..";
 
 export class OrderService {
   async getList(options?: FindOptions): Promise<OrderI[]> {
-    return await Order.findAll({ order: [["createdAt", "ASC"]], ...options });
+    return await Order.findAll({ order: [["createdAt", "DESC"]], ...options });
   }
 
   async getById(id: string, options?: FindOptions): Promise<OrderI | null> {

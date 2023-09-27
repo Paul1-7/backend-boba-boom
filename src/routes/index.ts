@@ -1,7 +1,7 @@
 import { Application } from "express";
 
 import { router as rFlavour } from "./flavours.route";
-import { router as rMenu } from "./subscriptions-push.route";
+import { router as rMenu } from "./menus.route";
 import { router as rOrder } from "./orders.route";
 import { router as rPriceMenu } from "./prices-menu.route";
 import { router as rRol } from "./rols.route";
